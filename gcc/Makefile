@@ -19,7 +19,7 @@
 #Boston MA 02111-1307, USA.
 
 # Directory where sources are, from where we are.
-srcdir = .
+srcdir ?= .
 VPATH = $(srcdir)
 
 CC = gcc
@@ -81,7 +81,7 @@ $(OBJS): %.o: %.c $(DEPDIR)/%.d | $(GENERATED)
 	$(COMPILE) $<
 	$(POSTCOMPILE)
 
-$(RTL_OBJS) $(RTLANAL_OBJS) $(PRINT_OBJS): %.o: %.c $(DEPDIR)/%.d
+$(RTL_OBJS) $(RTLANAL_OBJS) $(PRINT_OBJS): %.o: %.c $(DEPDIR)/%.d genrtl.h
 	$(COMPILE) $<
 	$(POSTCOMPILE)
 
